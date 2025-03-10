@@ -1,0 +1,99 @@
+[
+    {
+        "id": "1",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/birinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "2",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/ikkinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "3",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/uchunchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "4",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/tortinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "5",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/beshinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "6",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/oltinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "7",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/yetinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "8",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/sakizinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "9",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/toqqizinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "10",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/oninchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "11",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/onbirinchi.png",
+        "imgalt": "VaporMax"
+    },
+    {
+        "id": "12",
+        "title": "Product name",
+        "price": "56.00",
+        "oldprice": "130.00",
+        "photo": "./image/onikkinchi.png",
+        "imgalt": "VaporMax"
+    }
+    
+]

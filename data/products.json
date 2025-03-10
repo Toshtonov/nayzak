@@ -1,0 +1,67 @@
+[
+    {
+        "id": "0",
+        "name": "AirForce One",
+        "cost": "110.00",
+        "oldCost": "130.00",
+        "image": "./image/11cce9be04a12bb2e0ec1391225c9065.png",
+        "imgAlt": "AirForce one shoes"
+    },
+    {
+        "id": "1",
+        "name": "Jordan Max Aura",
+        "cost": "256.00",
+        "oldCost": "320.00",
+        "image": "./image/43c8a5fa3d4df8ba44931c087a5e828d.png",
+        "imgAlt": "Jordan Max Aura shoes"
+    },
+    {
+        "id": "2",
+        "name": "Pegasus 39",
+        "cost": "156.00",
+        "oldCost": "256.00",
+        "image": "./image/05a746c73c0f1dd49d2ef6bb06ece4fb.png",
+        "imgAlt": "Pegasus 39shoes"
+    },
+    {
+        "id": "3",
+        "name": "React Infinity",
+        "cost": "59.00",
+        "oldCost": "99.00",
+        "image": "./image/6507e2041d26794eadf4e8bc0bd15831.png",
+        "imgAlt": "React Infinity shoes"
+    },
+    {
+        "id": "4",
+        "name": "Vapormax II",
+        "cost": "143.00",
+        "oldCost": "230.00",
+        "image": "./image/33439e96c67d6ab5acb28402c33fb091.png",
+        "imgAlt": "Vapormax II shoes"
+    },
+    {
+        "id": "5",
+        "name": "Zoom Freak",
+        "cost": "99.00",
+        "oldCost": "137.00",
+        "image": "./image/dfaef26ef17d50dba5f0cbdda9e7da0f.png",
+        "imgAlt": "Zoom Freak shoes"
+    },
+    {
+        "id": "6",
+        "name": "Blazer Mid",
+        "cost": "452.00",
+        "oldCost": "610.00",
+        "image": "./image/97183ff56cc4e7a1d983edbab82d1713.png",
+        "imgAlt": "Blazer Mid shoes"
+    },
+    {
+        "id": "7",
+        "name": "VaporMax Plus",
+        "cost": "190.00",
+        "oldCost": "230.00",
+        "image": "./image/43c8a5fa3d4df8ba44931c087a5e828d.png",
+        "imgAlt": "VaporMax Plus shoes"
+    }
+  
+]
