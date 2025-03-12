@@ -64,7 +64,7 @@
                     </div></i>
                 </li>
                 <li>
-                    <button class="dropdown-btn">Pages <i class="fa-solid fa-chevron-down"></i></button>
+                    <button class="dropdown-btn" data-switcher="pages">Pages <i class="fa-solid fa-chevron-down"></i></button>
                     <div class="dropdown-content">
                         <a href="#">Page 1</a>
                         <a href="#">Page 2</a>
@@ -1200,6 +1200,179 @@
                         </div>
                     </footer>
                 </div>
+            </div>
+            <div id="pages" class="page">
+                
+            
+                <main>
+                    <div class="container">
+                        <h1 class="page-title">Cart</h1>
+                        
+                        <div class="shipping-progress">
+                            <p>Shop for $34 more to enjoy FREE Shipping</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%;"></div>
+                                <div class="progress-icon">🚚</div>
+                            </div>
+                        </div>
+            
+                        <div class="cart-container">
+                            <div class="cart-products">
+                                <div class="cart-header">
+                                    <div class="product-col">Product</div>
+                                    <div class="quantity-col">Quantity</div>
+                                    <div class="price-col">Price</div>
+                                    <div class="subtotal-col">Subtotal</div>
+                                </div>
+                                
+                                <div class="cart-item">
+                                    <div class="product-col">
+                                        <div class="product-info">
+                                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bUkBAT3cUAzr54VT0MPxLkZEcBNk7J.png" alt="Red sneakers" class="product-img">
+                                            <div class="product-details">
+                                                <h3>AirBrags® Sneakers</h3>
+                                                <p>Size: 7XL, Color: Green</p>
+                                                <button class="remove-btn"><i class="fas fa-trash"></i> Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="quantity-col">
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn minus">-</button>
+                                            <input type="text" value="1" class="quantity-input">
+                                            <button class="quantity-btn plus">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="price-col">$80.00</div>
+                                    <div class="subtotal-col">$80.00</div>
+                                </div>
+                                
+                                <div class="cart-item">
+                                    <div class="product-col">
+                                        <div class="product-info">
+                                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bUkBAT3cUAzr54VT0MPxLkZEcBNk7J.png" alt="Green shoes" class="product-img">
+                                            <div class="product-details">
+                                                <h3>Luxury Kenzo Shoes</h3>
+                                                <p>Size: 7XL, Color: Green</p>
+                                                <button class="remove-btn"><i class="fas fa-trash"></i> Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="quantity-col">
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn minus">-</button>
+                                            <input type="text" value="1" class="quantity-input">
+                                            <button class="quantity-btn plus">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="price-col">$80.00</div>
+                                    <div class="subtotal-col">$80.00</div>
+                                </div>
+                            </div>
+                            
+                            <div class="cart-actions">
+                                <div class="coupon-section">
+                                    <h3>Have a coupon?</h3>
+                                    <p>Add your code for an instant cart discount</p>
+                                    <div class="coupon-form">
+                                        <input type="text" placeholder="Input" class="coupon-input">
+                                        <button class="apply-btn">Apply</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="cart-summary">
+                                    <h3>Cart summary</h3>
+                                    <div class="shipping-options">
+                                        <div class="shipping-option">
+                                            <label>
+                                                <input type="radio" name="shipping" checked>
+                                                <span class="radio-label">Free shipping</span>
+                                            </label>
+                                            <span class="shipping-price">$0.00</span>
+                                        </div>
+                                        <div class="shipping-option">
+                                            <label>
+                                                <input type="radio" name="shipping">
+                                                <span class="radio-label">Express shipping</span>
+                                            </label>
+                                            <span class="shipping-price">+$15.00</span>
+                                        </div>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Subtotal</span>
+                                        <span class="summary-price">$160.00</span>
+                                    </div>
+                                    <div class="summary-row total">
+                                        <span>Total</span>
+                                        <span class="summary-price">$160.00</span>
+                                    </div>
+                                    <button class="checkout-btn">Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            
+                <footer>
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-column">
+                                <div class="footer-logo">
+                                    <span class="star"></span> Nayzak
+                                </div>
+                                <p>Proof luxuriantly engage worldwide method process shopping.</p>
+                                <div class="social-icons">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                            
+                            <div class="footer-column">
+                                <h4>Shop</h4>
+                                <ul>
+                                    <li><a href="#">My account</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Wishlist</a></li>
+                                    <li><a href="#">Cart</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer-column">
+                                <h4>Information</h4>
+                                <ul>
+                                    <li><a href="#">Shipping Policy</a></li>
+                                    <li><a href="#">Returns & Refunds</a></li>
+                                    <li><a href="#">Cookies Policy</a></li>
+                                    <li><a href="#">Frequently asked</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer-column">
+                                <h4>Company</h4>
+                                <ul>
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="footer-bottom">
+                            <p>© 2088 Nayzak Design</p>
+                            <div class="footer-options">
+                                <div class="language-selector">
+                                    <img src="https://flagcdn.com/w20/us.png" alt="English"> English <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="currency-selector">
+                                    USD <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
         <!-- nav sing up modal -->

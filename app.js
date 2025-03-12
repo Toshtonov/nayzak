@@ -483,3 +483,134 @@ window.addEventListener("click", function (event) {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Quantity controls
+    const minusButtons = document.querySelectorAll(".quantity-btn.minus")
+    const plusButtons = document.querySelectorAll(".quantity-btn.plus")
+    const quantityInputs = document.querySelectorAll(".quantity-input")
+  
+    // Update cart totals
+    function updateCartTotals() {
+      let subtotal = 0
+      const items = document.querySelectorAll(".cart-item")
+  
+      items.forEach((item) => {
+        const quantity = Number.parseInt(item.querySelector(".quantity-input").value)
+        const price = Number.parseFloat(item.querySelector(".price-col").textContent.replace("$", ""))
+        const itemSubtotal = quantity * price
+  
+        item.querySelector(".subtotal-col").textContent = `$${itemSubtotal.toFixed(2)}`
+        subtotal += itemSubtotal
+      })
+  
+      // Update summary
+      document.querySelectorAll(".summary-price")[0].textContent = `$${subtotal.toFixed(2)}`
+  
+      // Check if express shipping is selected
+      const expressShipping = document.querySelectorAll('input[name="shipping"]')[1].checked
+      const shippingCost = expressShipping ? 15 : 0
+  
+      const total = subtotal + shippingCost
+      document.querySelectorAll(".summary-price")[1].textContent = `$${total.toFixed(2)}`
+  
+      // Update progress bar
+      const freeShippingThreshold = 200
+      const remaining = freeShippingThreshold - subtotal
+  
+      if (remaining > 0) {
+        document.querySelector(".shipping-progress p").textContent =
+          `Shop for $${remaining.toFixed(2)} more to enjoy FREE Shipping`
+  
+        const progressPercent = (subtotal / freeShippingThreshold) * 100
+        document.querySelector(".progress").style.width = `${progressPercent}%`
+      } else {
+        document.querySelector(".shipping-progress p").textContent = "You are eligible for FREE Shipping!"
+        document.querySelector(".progress").style.width = "100%"
+      }
+    }
+  
+    // Decrease quantity
+    minusButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const input = this.parentNode.querySelector(".quantity-input")
+        const value = Number.parseInt(input.value)
+        if (value > 1) {
+          input.value = value - 1
+          updateCartTotals()
+        }
+      })
+    })
+  
+    // Increase quantity
+    plusButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const input = this.parentNode.querySelector(".quantity-input")
+        const value = Number.parseInt(input.value)
+        input.value = value + 1
+        updateCartTotals()
+      })
+    })
+  
+    // Manual input change
+    quantityInputs.forEach((input) => {
+      input.addEventListener("change", function () {
+        const value = Number.parseInt(this.value)
+        if (isNaN(value) || value < 1) {
+          this.value = 1
+        }
+        updateCartTotals()
+      })
+    })
+  
+    // Remove items
+    const removeButtons = document.querySelectorAll(".remove-btn")
+    removeButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const item = this.closest(".cart-item")
+        item.remove()
+  
+        // Update cart count
+        const cartCount = document.querySelector(".cart-count")
+        cartCount.textContent = document.querySelectorAll(".cart-item").length
+  
+        // If no items left
+        if (document.querySelectorAll(".cart-item").length === 0) {
+          document.querySelector(".cart-products").innerHTML =
+            '<div class="empty-cart"><p>Your cart is empty</p><a href="#" class="continue-shopping">Continue Shopping</a></div>'
+        }
+  
+        updateCartTotals()
+      })
+    })
+  
+    // Shipping option change
+    const shippingOptions = document.querySelectorAll('input[name="shipping"]')
+    shippingOptions.forEach((option) => {
+      option.addEventListener("change", updateCartTotals)
+    })
+  
+    // Apply coupon
+    const applyButton = document.querySelector(".apply-btn")
+    applyButton.addEventListener("click", () => {
+      const couponInput = document.querySelector(".coupon-input")
+      const couponCode = couponInput.value.trim()
+  
+      if (couponCode) {
+        // This is where you would validate the coupon code
+        // For demo purposes, let's just show an alert
+        alert(`Coupon "${couponCode}" applied!`)
+        couponInput.value = ""
+      }
+    })
+  
+    // Checkout button
+    const checkoutButton = document.querySelector(".checkout-btn")
+    checkoutButton.addEventListener("click", () => {
+      alert("Proceeding to checkout!")
+    })
+  
+    // Initialize cart totals
+    updateCartTotals()
+  })
+  
+  
