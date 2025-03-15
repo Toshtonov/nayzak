@@ -135,7 +135,6 @@ function toggleInputType() {
         icon.classList.add('fa-eye');
     }
 }
-// seles card page
 const salesCards = document.querySelector(".cards")
 
 fetch("../data/products.json")
@@ -173,11 +172,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     closeButton.addEventListener("click", closeModal);
     setInterval(showModal, 30000);
-
+   
 });
 
 
-// Sahifadagi boshqa joyga bosilsa, barcha menyular yopiladi
 document.addEventListener("click", function () {
     document.querySelectorAll(".dropdown-content").forEach(menu => {
         menu.style.display = "none";
@@ -190,12 +188,12 @@ document.addEventListener("click", function () {
 const SreachCards = document.querySelector(".sreachPageCards");
 
 fetch("../data/product.json")
-    .then((response) => response.json()) // JSON formatga o'tkazish
-    .then((products) => SreachProducts(products)) // Ma'lumotlarni chiqarish
+    .then((response) => response.json())
+    .then((products) => SreachProducts(products))
     .catch((error) => console.error("Ma'lumot yuklashda xatolik:", error));
 
 function SreachProducts(products) {
-    products.forEach((product) => { // forEach() orqali har bir mahsulotni qo'shish
+    products.forEach((product) => {
         const sreachCard = document.createElement("div");
         sreachCard.classList.add("sreachPageCard");
         sreachCard.innerHTML = `
@@ -213,26 +211,20 @@ function SreachProducts(products) {
     });
 }
 function initializeLayoutSwitcher() {
-    // Get the container and all layout buttons
     const cardsContainer = document.querySelector('.sreachPageCards');
     const gridButton = document.querySelector('.fa-th');
     const threeColButton = document.querySelector('.fa-bars');
     const listButton = document.querySelector('.fa-list');
 
-    // Function to handle layout changes
     function changeLayout(layoutType) {
-        // Remove all possible layout classes first
         cardsContainer.classList.remove('grid-view', 'three-column-view', 'list-view');
 
-        // Add the selected layout class
         cardsContainer.classList.add(layoutType);
 
-        // Remove active state from all buttons
         gridButton.classList.remove('active');
         threeColButton.classList.remove('active');
         listButton.classList.remove('active');
 
-        // Add active state to clicked button
         switch (layoutType) {
             case 'grid-view':
                 gridButton.classList.add('active');
@@ -246,16 +238,13 @@ function initializeLayoutSwitcher() {
         }
     }
 
-    // Add click event listeners to buttons
     gridButton.addEventListener('click', () => changeLayout('grid-view'));
     threeColButton.addEventListener('click', () => changeLayout('three-column-view'));
     listButton.addEventListener('click', () => changeLayout('list-view'));
 
-    // Set default view
     changeLayout('grid-view');
 }
 
-// Add the required CSS
 const styles = `
     .sreachPageCards {
         display: grid;
@@ -311,7 +300,6 @@ const styleSheet = document.createElement('style');
 styleSheet.textContent = styles;
 document.head.appendChild(styleSheet);
 document.addEventListener('DOMContentLoaded', function () {
-    // Category and style selection
     const categoryItems = document.querySelectorAll('.category-list li');
     const styleItems = document.querySelectorAll('.style-list li');
 
@@ -329,24 +317,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Color selection
     const colorCircles = document.querySelectorAll('.color-circle');
 
     colorCircles.forEach(circle => {
         circle.addEventListener('click', function () {
             colorCircles.forEach(c => {
-                // Remove any existing after elements
                 c.style.boxShadow = 'none';
                 c.style.position = '';
             });
 
-            // Add selection indicator
             this.style.position = 'relative';
             this.style.boxShadow = `0 0 0 3px ${this.style.backgroundColor}, 0 0 0 4px #ddd`;
         });
     });
 
-    // Size selection
     const sizeButtons = document.querySelectorAll('.size-btn');
 
     sizeButtons.forEach(btn => {
@@ -363,7 +347,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Price range slider
     const minPriceSlider = document.getElementById('min-price');
     const maxPriceSlider = document.getElementById('max-price');
     const priceRangeDisplay = document.querySelector('.price-range');
@@ -373,7 +356,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const maxPrice = parseInt(maxPriceSlider.value);
 
         if (minPrice > maxPrice) {
-            // Prevent min from being greater than max
             minPriceSlider.value = maxPrice;
         }
 
@@ -383,27 +365,23 @@ document.addEventListener('DOMContentLoaded', function () {
     minPriceSlider.addEventListener('input', updatePriceRange);
     maxPriceSlider.addEventListener('input', updatePriceRange);
 
-    const filterCont= document.querySelector('.filter-container')
+    const filterCont = document.querySelector('.filter-container')
     const closeBtn = document.querySelector('.close-btn');
     closeBtn.addEventListener('click', function () {
         filterCont.style.display = "none";
     });
 });
 document.addEventListener("DOMContentLoaded", () => {
-    // Thumbnail image click handler
     const thumbnails = document.querySelectorAll(".thumbnail")
     const mainImage = document.getElementById("main-product-image")
 
     thumbnails.forEach((thumbnail) => {
         thumbnail.addEventListener("click", function () {
-            // In a real implementation, we would change the src to the actual image
-            // For this demo, we're just toggling the active class
             thumbnails.forEach((t) => t.classList.remove("active"))
             this.classList.add("active")
         })
     })
 
-    // Color selection
     const colorOptions = document.querySelectorAll(".color-option")
 
     colorOptions.forEach((option) => {
@@ -413,27 +391,23 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
-  
+
 
     const minusBtn = document.querySelector(".minus")
     const plusBtn = document.querySelector(".plus")
     const quantityInput = document.querySelector(".quantity-input")
 
-   
 
-    // Tab functionality
+
     const tabHeaders = document.querySelectorAll(".tab-header")
     const tabPanels = document.querySelectorAll(".tab-panel")
 
     tabHeaders.forEach((header) => {
         header.addEventListener("click", function () {
             const tabId = this.getAttribute("data-tab")
-
-            // Remove active class from all headers and panels
             tabHeaders.forEach((h) => h.classList.remove("active"))
             tabPanels.forEach((p) => p.classList.remove("active"))
 
-            // Add active class to clicked header and corresponding panel
             this.classList.add("active")
             document.getElementById(tabId).classList.add("active")
         })
@@ -441,16 +415,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const addToCartBtn = document.querySelector(".add-to-cart-btn")
 
-  
+
 })
 document.querySelectorAll(".dropdown-btn").forEach(button => {
     button.addEventListener("click", function (event) {
         event.stopPropagation(); // Boshqa eventlarni to‘xtatish
 
-        let menu = this.parentElement.querySelector(".dropdown-content"); // Tugma ichidagi menyuni olish
         let allMenus = document.querySelectorAll(".dropdown-content");
 
-        // Barcha dropdownlarni yopish
         allMenus.forEach(m => {
             if (m !== menu) {
                 m.style.display = "none";
@@ -483,134 +455,143 @@ window.addEventListener("click", function (event) {
         }
     });
 });
-document.addEventListener("DOMContentLoaded", () => {
-    // Quantity controls
-    const minusButtons = document.querySelectorAll(".quantity-btn.minus")
-    const plusButtons = document.querySelectorAll(".quantity-btn.plus")
-    const quantityInputs = document.querySelectorAll(".quantity-input")
-  
-    // Update cart totals
-    function updateCartTotals() {
-      let subtotal = 0
-      const items = document.querySelectorAll(".cart-item")
-  
-      items.forEach((item) => {
-        const quantity = Number.parseInt(item.querySelector(".quantity-input").value)
-        const price = Number.parseFloat(item.querySelector(".price-col").textContent.replace("$", ""))
-        const itemSubtotal = quantity * price
-  
-        item.querySelector(".subtotal-col").textContent = `$${itemSubtotal.toFixed(2)}`
-        subtotal += itemSubtotal
-      })
-  
-      // Update summary
-      document.querySelectorAll(".summary-price")[0].textContent = `$${subtotal.toFixed(2)}`
-  
-      // Check if express shipping is selected
-      const expressShipping = document.querySelectorAll('input[name="shipping"]')[1].checked
-      const shippingCost = expressShipping ? 15 : 0
-  
-      const total = subtotal + shippingCost
-      document.querySelectorAll(".summary-price")[1].textContent = `$${total.toFixed(2)}`
-  
-      // Update progress bar
-      const freeShippingThreshold = 200
-      const remaining = freeShippingThreshold - subtotal
-  
-      if (remaining > 0) {
-        document.querySelector(".shipping-progress p").textContent =
-          `Shop for $${remaining.toFixed(2)} more to enjoy FREE Shipping`
-  
-        const progressPercent = (subtotal / freeShippingThreshold) * 100
-        document.querySelector(".progress").style.width = `${progressPercent}%`
-      } else {
-        document.querySelector(".shipping-progress p").textContent = "You are eligible for FREE Shipping!"
-        document.querySelector(".progress").style.width = "100%"
-      }
+
+
+const cartSidebar = document.querySelector(".cartsidebar")
+const cartSidebarOpen = document.getElementById("Cartsidebaropen")
+const cartSidebarClose = document.getElementById("Cartsidebarclose")
+cartSidebarOpen.addEventListener("click", function () {
+    cartSidebar.style.display = "flex"
+})
+cartSidebarClose.addEventListener("click", function () {
+    cartSidebar.style.display = "none"
+})
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all quantity controls
+    const plusButtons = document.querySelectorAll('.quantity-btn.plus');
+    const minusButtons = document.querySelectorAll('.quantity-btn.minus');
+    const removeButtons = document.querySelectorAll('.remove-btn');
+    const shippingOptions = document.querySelectorAll('input[name="shipping"]');
+    
+    // Add event listeners to plus buttons
+    plusButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const quantityInput = this.parentElement.querySelector('.quantity-input');
+        const cartItem = this.closest('.cart-item');
+        
+        // Increase quantity
+        let quantity = parseInt(quantityInput.value);
+        quantity++;
+        quantityInput.value = quantity;
+        
+        // Update subtotal
+        updateItemSubtotal(cartItem, quantity);
+        
+        // Update cart summary
+        updateCartSummary();
+      });
+    });
+    
+    // Add event listeners to minus buttons
+    minusButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const quantityInput = this.parentElement.querySelector('.quantity-input');
+        const cartItem = this.closest('.cart-item');
+        
+        // Decrease quantity, but not below 1
+        let quantity = parseInt(quantityInput.value);
+        if (quantity > 1) {
+          quantity--;
+          quantityInput.value = quantity;
+          
+          // Update subtotal
+          updateItemSubtotal(cartItem, quantity);
+          
+          // Update cart summary
+          updateCartSummary();
+        }
+      });
+    });
+    
+    // Add event listeners to quantity inputs for direct changes
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+    quantityInputs.forEach(input => {
+      input.addEventListener('change', function() {
+        const cartItem = this.closest('.cart-item');
+        let quantity = parseInt(this.value);
+        
+        // Ensure quantity is at least 1
+        if (isNaN(quantity) || quantity < 1) {
+          quantity = 1;
+          this.value = 1;
+        }
+        
+        // Update subtotal
+        updateItemSubtotal(cartItem, quantity);
+        
+        // Update cart summary
+        updateCartSummary();
+      });
+    });
+    
+    // Add event listeners to remove buttons
+    removeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const cartItem = this.closest('.cart-item');
+        cartItem.remove();
+        
+        // Update cart summary
+        updateCartSummary();
+      });
+    });
+    
+    // Add event listeners to shipping options
+    shippingOptions.forEach(option => {
+      option.addEventListener('change', function() {
+        updateCartSummary();
+      });
+    });
+    
+    // Function to update an item's subtotal
+    function updateItemSubtotal(cartItem, quantity) {
+      const priceText = cartItem.querySelector('.price-col').textContent;
+      const price = parseFloat(priceText.replace('$', ''));
+      const subtotal = price * quantity;
+      
+      // Update the subtotal display
+      cartItem.querySelector('.subtotal-col').textContent = '$' + subtotal.toFixed(2);
     }
-  
-    // Decrease quantity
-    minusButtons.forEach((button) => {
-      button.addEventListener("click", function () {
-        const input = this.parentNode.querySelector(".quantity-input")
-        const value = Number.parseInt(input.value)
-        if (value > 1) {
-          input.value = value - 1
-          updateCartTotals()
+    
+    // Function to update the cart summary
+    function updateCartSummary() {
+      // Calculate subtotal from all items
+      const subtotalElements = document.querySelectorAll('.subtotal-col');
+      let subtotal = 0;
+      
+      subtotalElements.forEach(element => {
+        if (element.closest('.cart-item')) { // Make sure we're only counting items, not headers
+          subtotal += parseFloat(element.textContent.replace('$', ''));
         }
-      })
-    })
-  
-    // Increase quantity
-    plusButtons.forEach((button) => {
-      button.addEventListener("click", function () {
-        const input = this.parentNode.querySelector(".quantity-input")
-        const value = Number.parseInt(input.value)
-        input.value = value + 1
-        updateCartTotals()
-      })
-    })
-  
-    // Manual input change
-    quantityInputs.forEach((input) => {
-      input.addEventListener("change", function () {
-        const value = Number.parseInt(this.value)
-        if (isNaN(value) || value < 1) {
-          this.value = 1
+      });
+      
+      // Get shipping cost
+      let shippingCost = 0;
+      const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+      if (selectedShipping) {
+        const shippingPriceText = selectedShipping.closest('.shipping-option').querySelector('.shipping-price').textContent;
+        if (shippingPriceText.includes('+')) {
+          shippingCost = parseFloat(shippingPriceText.replace('+$', ''));
         }
-        updateCartTotals()
-      })
-    })
-  
-    // Remove items
-    const removeButtons = document.querySelectorAll(".remove-btn")
-    removeButtons.forEach((button) => {
-      button.addEventListener("click", function () {
-        const item = this.closest(".cart-item")
-        item.remove()
-  
-        // Update cart count
-        const cartCount = document.querySelector(".cart-count")
-        cartCount.textContent = document.querySelectorAll(".cart-item").length
-  
-        // If no items left
-        if (document.querySelectorAll(".cart-item").length === 0) {
-          document.querySelector(".cart-products").innerHTML =
-            '<div class="empty-cart"><p>Your cart is empty</p><a href="#" class="continue-shopping">Continue Shopping</a></div>'
-        }
-  
-        updateCartTotals()
-      })
-    })
-  
-    // Shipping option change
-    const shippingOptions = document.querySelectorAll('input[name="shipping"]')
-    shippingOptions.forEach((option) => {
-      option.addEventListener("change", updateCartTotals)
-    })
-  
-    // Apply coupon
-    const applyButton = document.querySelector(".apply-btn")
-    applyButton.addEventListener("click", () => {
-      const couponInput = document.querySelector(".coupon-input")
-      const couponCode = couponInput.value.trim()
-  
-      if (couponCode) {
-        // This is where you would validate the coupon code
-        // For demo purposes, let's just show an alert
-        alert(`Coupon "${couponCode}" applied!`)
-        couponInput.value = ""
       }
-    })
-  
-    // Checkout button
-    const checkoutButton = document.querySelector(".checkout-btn")
-    checkoutButton.addEventListener("click", () => {
-      alert("Proceeding to checkout!")
-    })
-  
-    // Initialize cart totals
-    updateCartTotals()
-  })
-  
-  
+      
+      // Calculate total
+      const total = subtotal + shippingCost;
+      
+      // Update summary display
+      document.querySelector('.summary-row:not(.total) .summary-price').textContent = '$' + subtotal.toFixed(2);
+      document.querySelector('.summary-row.total .summary-price').textContent = '$' + total.toFixed(2);
+    }
+    
+    // Initialize cart summary on page load
+    updateCartSummary();
+  });
