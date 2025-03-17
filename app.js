@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.style.display = "none";
     }
     closeButton.addEventListener("click", closeModal);
-    setInterval(showModal, 30000);
+    // setInterval(showModal, 30000);
    
 });
 
@@ -417,21 +417,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 })
-document.querySelectorAll(".dropdown-btn").forEach(button => {
-    button.addEventListener("click", function (event) {
-        event.stopPropagation(); // Boshqa eventlarni to‘xtatish
+// document.querySelectorAll(".dropdown-btn").forEach(button => {
+//     button.addEventListener("click", function (event) {
+//         event.stopPropagation(); // Boshqa eventlarni to‘xtatish
 
-        let allMenus = document.querySelectorAll(".dropdown-content");
+//         let allMenus = document.querySelectorAll(".dropdown-content");
 
-        allMenus.forEach(m => {
-            if (m !== menu) {
-                m.style.display = "none";
-            }
-        });
+//         allMenus.forEach(m => {
+//             if (m !== menu) {
+//                 m.style.display = "none";
+//             }
+//         });
 
-        menu.style.display = (menu.style.display === "block") ? "none" : "block";
-    });
-});
+//         menu.style.display = (menu.style.display === "block") ? "none" : "block";
+//     });
+// });
 
 document.addEventListener("click", function () {
     document.querySelectorAll(".dropdown-content").forEach(menu => {
@@ -498,73 +498,59 @@ document.addEventListener('DOMContentLoaded', function() {
         const quantityInput = this.parentElement.querySelector('.quantity-input');
         const cartItem = this.closest('.cart-item');
         
-        // Decrease quantity, but not below 1
         let quantity = parseInt(quantityInput.value);
         if (quantity > 1) {
           quantity--;
           quantityInput.value = quantity;
           
-          // Update subtotal
           updateItemSubtotal(cartItem, quantity);
           
-          // Update cart summary
           updateCartSummary();
         }
       });
     });
     
-    // Add event listeners to quantity inputs for direct changes
     const quantityInputs = document.querySelectorAll('.quantity-input');
     quantityInputs.forEach(input => {
       input.addEventListener('change', function() {
         const cartItem = this.closest('.cart-item');
         let quantity = parseInt(this.value);
         
-        // Ensure quantity is at least 1
         if (isNaN(quantity) || quantity < 1) {
           quantity = 1;
           this.value = 1;
         }
         
-        // Update subtotal
         updateItemSubtotal(cartItem, quantity);
         
-        // Update cart summary
         updateCartSummary();
       });
     });
     
-    // Add event listeners to remove buttons
     removeButtons.forEach(button => {
       button.addEventListener('click', function() {
         const cartItem = this.closest('.cart-item');
         cartItem.remove();
         
-        // Update cart summary
         updateCartSummary();
       });
     });
     
-    // Add event listeners to shipping options
     shippingOptions.forEach(option => {
       option.addEventListener('change', function() {
         updateCartSummary();
       });
     });
     
-    // Function to update an item's subtotal
     function updateItemSubtotal(cartItem, quantity) {
       const priceText = cartItem.querySelector('.price-col').textContent;
       const price = parseFloat(priceText.replace('$', ''));
       const subtotal = price * quantity;
       
-      // Update the subtotal display
       cartItem.querySelector('.subtotal-col').textContent = '$' + subtotal.toFixed(2);
     }
     
-    // Function to update the cart summary
     function updateCartSummary() {
-      // Calculate subtotal from all items
       const subtotalElements = document.querySelectorAll('.subtotal-col');
       let subtotal = 0;
       
@@ -574,7 +560,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
       
-      // Get shipping cost
       let shippingCost = 0;
       const selectedShipping = document.querySelector('input[name="shipping"]:checked');
       if (selectedShipping) {
@@ -584,14 +569,118 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
       
-      // Calculate total
       const total = subtotal + shippingCost;
       
-      // Update summary display
       document.querySelector('.summary-row:not(.total) .summary-price').textContent = '$' + subtotal.toFixed(2);
       document.querySelector('.summary-row.total .summary-price').textContent = '$' + total.toFixed(2);
     }
     
-    // Initialize cart summary on page load
     updateCartSummary();
+  });
+document.addEventListener('DOMContentLoaded', function() {
+    const validCoupons = {
+      'SALOM10': 10,
+      'SALOM20': 20,
+      'SALOM30': 30,
+      'SALOM40': 40,
+      'SALOM50': 50
+    };
+    
+    const couponInput = document.querySelector('.coupon-input');
+    const applyButton = document.querySelector('.apply-btn');
+    
+    if (!couponInput || !applyButton) {
+      console.error('Coupon elements not found');
+      return;
+    }
+    
+    console.log('Coupon elements found:', couponInput, applyButton);
+    
+    function applyCouponIsolated() {
+      console.log('Apply coupon function called');
+      
+      const couponCode = couponInput.value.trim().toUpperCase();
+      console.log('Coupon code entered:', couponCode);
+      
+      if (!couponCode) {
+        alert('Please enter a coupon code');
+        return;
+      }
+      
+      const subtotalElement = document.querySelector('.summary-row:not(.total) .summary-price');
+      if (!subtotalElement) {
+        console.error('Subtotal element not found');
+        return;
+      }
+      
+      const totalElement = document.querySelector('.summary-row.total .summary-price');
+      if (!totalElement) {
+        console.error('Total element not found');
+        return;
+      }
+      
+      if (validCoupons[couponCode]) {
+        const discountPercentage = validCoupons[couponCode];
+        console.log('Valid coupon found:', couponCode, discountPercentage);
+        
+        const subtotal = parseFloat(subtotalElement.textContent.replace('$', ''));
+        console.log('Subtotal:', subtotal);
+        
+        const discountAmount = (subtotal * discountPercentage) / 100;
+        console.log('Discount amount:', discountAmount);
+        
+        let shippingCost = 0;
+        const shippingOption = document.querySelector('input[name="shipping"]:checked');
+        if (shippingOption) {
+          const shippingLabel = shippingOption.closest('.shipping-option').querySelector('.shipping-price').textContent;
+          shippingCost = shippingLabel.includes('+') ? 15 : 0;
+        }
+        console.log('Shipping cost:', shippingCost);
+        
+        const newTotal = subtotal - discountAmount + shippingCost;
+        console.log('New total:', newTotal);
+        
+        totalElement.textContent = '$' + newTotal.toFixed(2);
+        
+        let discountRow = document.querySelector('.discount-row');
+        if (!discountRow) {
+          discountRow = document.createElement('div');
+          discountRow.className = 'summary-row discount-row';
+          
+          const totalRow = document.querySelector('.summary-row.total');
+          if (totalRow && totalRow.parentNode) {
+            totalRow.parentNode.insertBefore(discountRow, totalRow);
+          } else {
+            console.error('Could not find total row');
+            return;
+          }
+        }
+        
+        discountRow.innerHTML = `
+          <span>Discount (${couponCode})</span>
+          <span class="discount-amount">-$${discountAmount.toFixed(2)}</span>
+        `;
+        
+        
+      } else {
+        console.log('Invalid coupon:', couponCode);
+        alert('Invalid coupon code. Please try again.');
+      }
+    }
+    
+    applyButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('Apply button clicked');
+      applyCouponIsolated();
+    });
+    
+    couponInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        console.log('Enter key pressed in coupon input');
+        applyCouponIsolated();
+      }
+    });
+    
+    console.log('Isolated coupon functionality initialized');
   });

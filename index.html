@@ -76,10 +76,11 @@
             <div class="navBtn">
                 <button class="singup" id="singup">Sing up</button>
                 <button class="login" id="login">Sing in</button>
+                <button id="logoutBtn" style="display: none;" onclick="logoutUser()">Chiqish</button>
                 <button data-switcher="account" id="navAcBtn"><i class="fa-solid fa-user"></i></button>
-
+                
             </div>
-
+           
         </nav>
         <div class="pages">
             <div class="homePage">
@@ -583,9 +584,9 @@
                                 <div class="coupon-section">
                                     <h3>Have a coupon?</h3>
                                     <p>Add your code for an instant cart discount</p>
-                                    <div class="coupon-input">
+                                    <div class="coupon-inpu">
                                         <input type="text" placeholder="Enter code">
-                                        <button class="apply-btn">Apply</button>
+                                        <button class="apply-bn">Apply</button>
                                     </div>
                                 </div>
                             </div>
@@ -1265,8 +1266,8 @@
                                 <!-- Coupon Code -->
                                 <div class="coupon-container">
                                   <div class="coupon-form">
-                                    <input class="coupon-input" type="text" placeholder="Input">
-                                    <button class="apply-button">Apply</button>
+                                    <input class="coupo-input" type="text" placeholder="Input">
+                                    <button class="appl-button">Apply</button>
                                   </div>
                                 </div>
                             
@@ -1344,8 +1345,9 @@
                                     <h3>Have a coupon?</h3>
                                     <p>Add your code for an instant cart discount</p>
                                     <div class="coupon-form">
-                                        <input type="text" placeholder="Input" class="coupon-input">
+                                        <input class="coupon-input" type="text" placeholder="Enter coupon code">
                                         <button class="apply-btn">Apply</button>
+                                        
                                     </div>
                                 </div>
                                 
@@ -1548,7 +1550,135 @@
             </div>
         </div>
     </div>
+    <div id="toast" class="toast"></div>
+
     <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signInWithPopup,
+            GoogleAuthProvider,
+            GithubAuthProvider,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyBuQFNHXDrDtt9IlXAKExR6hl2BCKxK8VQ",
+            authDomain: "nayzak-8cd7c.firebaseapp.com",
+            projectId: "nayzak-8cd7c",
+            storageBucket: "nayzak-8cd7c.appspot.com",
+            messagingSenderId: "697119814290",
+            appId: "1:697119814290:web:b1601b92f4e4d38c39ec4b",
+            measurementId: "G-W2HTRHMFJQ"
+        };
+    
+        // Firebase'ni ishga tushirish
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    
+        // 📌 Ro‘yxatdan o‘tish (Sign up)
+        window.registerUser = function () {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+    
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    console.log("Ro‘yxatdan o‘tildi:", userCredential.user);
+                    showToast("success", "✅ Ro‘yxatdan o‘tish muvaffaqiyatli!");
+                    updateUI(true);
+                })
+                .catch((error) => {
+                    console.error("Ro‘yxatdan o‘tishda xatolik:", error.message);
+                    showToast("error", "❌ Ro‘yxatdan o‘tishda xatolik!");
+                });
+        };
+    
+        // 📌 Tizimga kirish (Sign in)
+        window.signInUser = function () {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+    
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    console.log("Tizimga kirdi:", userCredential.user);
+                    showToast("success", "✅ Tizimga muvaffaqiyatli kirdingiz!");
+                    updateUI(true);
+                })
+                .catch((error) => {
+                    console.error("Kirishda xatolik:", error.message);
+                    showToast("error", "❌ Kirishda xatolik! Parol yoki email noto‘g‘ri.");
+                });
+        };
+    
+        // 📌 Google orqali kirish
+        document.getElementById("googleLogin").addEventListener("click", function () {
+            const googleProvider = new GoogleAuthProvider();
+    
+            signInWithPopup(auth, googleProvider)
+                .then((response) => {
+                    console.log("Google bilan kirdi:", response.user);
+                    showToast("success", "✅ Google bilan muvaffaqiyatli kirdingiz!");
+                    updateUI(true);
+                })
+                .catch((error) => {
+                    console.error("Google bilan kirishda xatolik:", error);
+                    showToast("error", "❌ Google bilan kirishda xatolik!");
+                });
+        });
+    
+        // 📌 GitHub orqali kirish
+        document.getElementById("githubKirish").addEventListener("click", function () {
+            const gitProvider = new GithubAuthProvider();
+    
+            signInWithPopup(auth, gitProvider)
+                .then((response) => {
+                    console.log("GitHub bilan kirdi:", response.user);
+                    showToast("success", "✅ GitHub bilan muvaffaqiyatli kirdingiz!");
+                    updateUI(true);
+                })
+                .catch((error) => {
+                    console.error("GitHub bilan kirishda xatolik:", error);
+                    showToast("error", "❌ GitHub bilan kirishda xatolik!");
+                });
+        });
+    
+        // 📌 Chiqish (Logout) funksiyasi
+        window.logoutUser = function () {
+            signOut(auth)
+                .then(() => {
+                    console.log("Foydalanuvchi tizimdan chiqdi");
+                    showToast("success", "✅ Tizimdan chiqdingiz!");
+                    updateUI(false);
+                })
+                .catch((error) => {
+                    console.error("Chiqishda xatolik:", error);
+                    showToast("error", "❌ Chiqishda xatolik yuz berdi!");
+                });
+        };
+    
+        // 📌 UI elementlarini boshqarish funksiyasi
+        function updateUI(isLoggedIn) {
+            document.getElementById("singincont").style.display = isLoggedIn ? "none" : "block"; // Modalni yopish
+            document.getElementById("singup").style.display = isLoggedIn ? "none" : "block"; // Sign up tugmasi
+            document.getElementById("login").style.display = isLoggedIn ? "none" : "block"; // Sign in tugmasi
+            document.getElementById("logoutBtn").style.display = isLoggedIn ? "block" : "none"; // Logout tugmasi
+        }
+    
+        // 📌 Toast xabarnoma funksiyasi
+        function showToast(type, message) {
+            const toast = document.getElementById("toast");
+            toast.className = `toast ${type}`;
+            toast.innerHTML = message;
+            toast.style.display = "flex";
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 3000);
+        }
+    </script>
+
+    <!-- <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
@@ -1663,7 +1793,7 @@
                 }
             }
         });
-    </script>
+    </script> -->
     <script src="app.js"></script>
 </body>
 </html>
