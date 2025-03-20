@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet">
 </head>
+
 <body class="body">
     <div class="bodyMain">
         <!-- Header top -->
@@ -64,7 +66,8 @@
                     </div></i>
                 </li>
                 <li>
-                    <button class="dropdown-btn" data-switcher="pages">Pages <i class="fa-solid fa-chevron-down"></i></button>
+                    <button class="dropdown-btn" data-switcher="pages">Pages <i
+                            class="fa-solid fa-chevron-down"></i></button>
                     <div class="dropdown-content">
                         <a href="#">Page 1</a>
                         <a href="#">Page 2</a>
@@ -78,9 +81,9 @@
                 <button class="login" id="login">Sing in</button>
                 <button id="logoutBtn" style="display: none;" onclick="logoutUser()">Chiqish</button>
                 <button data-switcher="account" id="navAcBtn"><i class="fa-solid fa-user"></i></button>
-                
+                <button class="SidebarOpenBtn"><i class="fa-solid fa-bars"></i></button>
             </div>
-           
+
         </nav>
         <div class="pages">
             <div class="homePage">
@@ -1203,12 +1206,12 @@
                 </div>
             </div>
             <div id="pages" class="page">
-                
-            <button id="Cartsidebaropen">ochil</button>
+
+                <button id="Cartsidebaropen">ochil</button>
                 <main>
                     <div class="container">
                         <h1 class="page-title">Cart</h1>
-                        
+
                         <div class="shipping-progress">
                             <p>Shop for $34 more to enjoy FREE Shipping</p>
                             <div class="progress-bar">
@@ -1220,71 +1223,76 @@
                             <div class="cart-container">
                                 <!-- Cart Header -->
                                 <div class="cart-header">
-                                  <h2 class="cart-title">Cart</h2>
-                                  <button id="Cartsidebarclose" class="close-button"><i class="fa-solid fa-xmark"></i></button>
+                                    <h2 class="cart-title">Cart</h2>
+                                    <button id="Cartsidebarclose" class="close-button"><i
+                                            class="fa-solid fa-xmark"></i></button>
                                 </div>
-                            
+
                                 <!-- Cart Items -->
                                 <div class="cart-items">
-                                  <!-- Item 1 -->
-                                  <div class="cart-item">
-                                    <img class="item-image" src="./image/38e0a196_20d2_4820_9f3f_e44c98318039.webp" alt="Orange Luxury Kanzo Shoes" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2280%22 height%3D%2280%22 viewBox%3D%220 0 80 80%22%3E%3Crect width%3D%2280%22 height%3D%2280%22 fill%3D%22%23f0f0f0%22%2F%3E%3C%2Fsvg%3E'">
-                                    <div class="item-details">
-                                      <h3 class="item-name">Luxury Kanzo Shoes</h3>
-                                      <p class="item-meta">Size: 2XL, Color: Green</p>
-                                      <div class="quantity-control">
-                                        <button class="quantity-button">−</button>
-                                        <input class="quantity-input" type="text" value="1" readonly>
-                                        <button class="quantity-button">+</button>
-                                      </div>
+                                    <!-- Item 1 -->
+                                    <div class="cart-item">
+                                        <img class="item-image" src="./image/38e0a196_20d2_4820_9f3f_e44c98318039.webp"
+                                            alt="Orange Luxury Kanzo Shoes"
+                                            onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2280%22 height%3D%2280%22 viewBox%3D%220 0 80 80%22%3E%3Crect width%3D%2280%22 height%3D%2280%22 fill%3D%22%23f0f0f0%22%2F%3E%3C%2Fsvg%3E'">
+                                        <div class="item-details">
+                                            <h3 class="item-name">Luxury Kanzo Shoes</h3>
+                                            <p class="item-meta">Size: 2XL, Color: Green</p>
+                                            <div class="quantity-control">
+                                                <button class="quantity-button">−</button>
+                                                <input class="quantity-input" type="text" value="1" readonly>
+                                                <button class="quantity-button">+</button>
+                                            </div>
+                                        </div>
+                                        <div class="item-price-actions">
+                                            <span class="item-price">$80.00</span>
+                                            <button class="remove-button">🗑️</button>
+                                        </div>
                                     </div>
-                                    <div class="item-price-actions">
-                                      <span class="item-price">$80.00</span>
-                                      <button class="remove-button">🗑️</button>
+
+                                    <!-- Item 2 -->
+                                    <div class="cart-item">
+                                        <img class="item-image" src="./image/97183ff56cc4e7a1d983edbab82d1713.png"
+                                            alt="Green Luxury Kanzo Shoes"
+                                            onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2280%22 height%3D%2280%22 viewBox%3D%220 0 80 80%22%3E%3Crect width%3D%2280%22 height%3D%2280%22 fill%3D%22%23f0f0f0%22%2F%3E%3C%2Fsvg%3E'">
+                                        <div class="item-details">
+                                            <h3 class="item-name">Luxury Kanzo Shoes</h3>
+                                            <p class="item-meta">Size: 2XL, Color: Green</p>
+                                            <div class="quantity-control">
+                                                <button class="quantity-button">−</button>
+                                                <input class="quantity-input" type="text" value="1" readonly>
+                                                <button class="quantity-button">+</button>
+                                            </div>
+                                        </div>
+                                        <div class="item-price-actions">
+                                            <span class="item-price">$80.00</span>
+                                            <button class="remove-button">🗑️</button>
+                                        </div>
                                     </div>
-                                  </div>
-                            
-                                  <!-- Item 2 -->
-                                  <div class="cart-item">
-                                    <img class="item-image" src="./image/97183ff56cc4e7a1d983edbab82d1713.png" alt="Green Luxury Kanzo Shoes" onerror="this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2280%22 height%3D%2280%22 viewBox%3D%220 0 80 80%22%3E%3Crect width%3D%2280%22 height%3D%2280%22 fill%3D%22%23f0f0f0%22%2F%3E%3C%2Fsvg%3E'">
-                                    <div class="item-details">
-                                      <h3 class="item-name">Luxury Kanzo Shoes</h3>
-                                      <p class="item-meta">Size: 2XL, Color: Green</p>
-                                      <div class="quantity-control">
-                                        <button class="quantity-button">−</button>
-                                        <input class="quantity-input" type="text" value="1" readonly>
-                                        <button class="quantity-button">+</button>
-                                      </div>
-                                    </div>
-                                    <div class="item-price-actions">
-                                      <span class="item-price">$80.00</span>
-                                      <button class="remove-button">🗑️</button>
-                                    </div>
-                                  </div>
                                 </div>
-                            
+
                                 <!-- Coupon Code -->
                                 <div class="coupon-container">
-                                  <div class="coupon-form">
-                                    <input class="coupo-input" type="text" placeholder="Input">
-                                    <button class="appl-button">Apply</button>
-                                  </div>
+                                    <div class="coupon-form">
+                                        <input class="coupon-inputT" type="text" placeholder="Input">
+                                        <button class="apply-button">Apply</button>
+                                    </div>
                                 </div>
-                            
+
                                 <!-- Cart Summary -->
-                                <div class="cart-summary">
-                                  <div class="summary-row">
-                                    <span>Subtotal</span>
-                                    <span>$160.00</span>
-                                  </div>
-                                  <div class="summary-row total-row">
-                                    <span>Total</span>
-                                    <span>$160.00</span>
-                                  </div>
-                                  <button class="checkout-button">Checkout</button>
-                                  <a href="#" class="view-cart-link">View cart</a>
+                                <div class="cart-summaryy">
+                                    <div class="summary-row">
+                                        <span>Subtotal</span>
+                                        <span>$160.00</span>
+                                    </div>
+                                    <div class="summary-row total-row">
+                                        <span>Total</span>
+                                        <span>$160.00</span>
+                                    </div>
+                                    <button class="checkout-button">Checkout</button>
+                                    <a href="#" class="view-cart-link">View cart</a>
                                 </div>
-                              </div>
+                            </div>
                         </div>
                         <div class="cart-container">
                             <div class="cart-products">
@@ -1294,11 +1302,12 @@
                                     <div class="price-col">Price</div>
                                     <div class="subtotal-col">Subtotal</div>
                                 </div>
-                                
+
                                 <div class="cart-item">
                                     <div class="product-col">
                                         <div class="product-info">
-                                            <img src="./image/33439e96c67d6ab5acb28402c33fb091.png" alt="Red sneakers" class="product-img">
+                                            <img src="./image/33439e96c67d6ab5acb28402c33fb091.png" alt="Red sneakers"
+                                                class="product-img">
                                             <div class="product-details">
                                                 <h3>AirBrags® Sneakers</h3>
                                                 <p>Size: 7XL, Color: Green</p>
@@ -1316,11 +1325,12 @@
                                     <div class="price-col">$80.00</div>
                                     <div class="subtotal-col">$80.00</div>
                                 </div>
-                                
+
                                 <div class="cart-item">
                                     <div class="product-col">
                                         <div class="product-info">
-                                            <img src="./image/8d199eb66a3fb1a18296fa33a8f30d0a.png" alt="Green shoes" class="product-img">
+                                            <img src="./image/8d199eb66a3fb1a18296fa33a8f30d0a.png" alt="Green shoes"
+                                                class="product-img">
                                             <div class="product-details">
                                                 <h3>Luxury Kenzo Shoes</h3>
                                                 <p>Size: 7XL, Color: Green</p>
@@ -1339,7 +1349,7 @@
                                     <div class="subtotal-col">$80.00</div>
                                 </div>
                             </div>
-                            
+
                             <div class="cart-actions">
                                 <div class="coupon-section">
                                     <h3>Have a coupon?</h3>
@@ -1347,10 +1357,10 @@
                                     <div class="coupon-form">
                                         <input class="coupon-input" type="text" placeholder="Enter coupon code">
                                         <button class="apply-btn">Apply</button>
-                                        
+
                                     </div>
                                 </div>
-                                
+
                                 <div class="cart-summary">
                                     <h3>Cart summary</h3>
                                     <div class="shipping-options">
@@ -1383,13 +1393,13 @@
                         </div>
                     </div>
                 </main>
-            
+
                 <footer>
                     <div class="container">
                         <div class="footer-content">
                             <div class="footer-column">
                                 <div class="footer-logo">
-                                    <span class="star"></span> Nayzak
+                                    Nayzak
                                 </div>
                                 <p>Proof luxuriantly engage worldwide method process shopping.</p>
                                 <div class="social-icons">
@@ -1399,7 +1409,7 @@
                                     <a href="#"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
-                            
+
                             <div class="footer-column">
                                 <h4>Shop</h4>
                                 <ul>
@@ -1409,7 +1419,7 @@
                                     <li><a href="#">Cart</a></li>
                                 </ul>
                             </div>
-                            
+
                             <div class="footer-column">
                                 <h4>Information</h4>
                                 <ul>
@@ -1419,7 +1429,7 @@
                                     <li><a href="#">Frequently asked</a></li>
                                 </ul>
                             </div>
-                            
+
                             <div class="footer-column">
                                 <h4>Company</h4>
                                 <ul>
@@ -1430,12 +1440,13 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="footer-bottom">
                             <p>© 2088 Nayzak Design</p>
                             <div class="footer-options">
                                 <div class="language-selector">
-                                    <img src="https://flagcdn.com/w20/us.png" alt="English"> English <i class="fas fa-chevron-down"></i>
+                                    <img src="https://flagcdn.com/w20/us.png" alt="English"> English <i
+                                        class="fas fa-chevron-down"></i>
                                 </div>
                                 <div class="currency-selector">
                                     USD <i class="fas fa-chevron-down"></i>
@@ -1502,33 +1513,110 @@
         </div>
 
         <div class="orbteur">
-            <div class="nabar" id="nabar"><span class="navbarCloseBtn">
-                    <i class="fa-solid fa-x navbarcloseBtn" id="yopq"></i>
-                </span>
-                <div class="navartexts">
-                    <p class="navbarpage">Home</p>
-                    <p class="navbarpage">Shop</p>
-                    <p class="navbarpage">Product</p>
-                    <p class="navbarpage">Pages</p>
-                    <p class="navbarpage">Shop</p>
+            <div class="mobile-menu">
+                <div class="menu-header">
+                    <div class="logo">
+                        <span class="logo-asterisk"><img src="./image/Branding (2).png" alt=""></span>
+                    </div>
+                    <button class="Sidebarclose-btn"><i class="fa-solid fa-x"></i></button>
                 </div>
 
-                <div class="navbaricons">
-                    <i class="fa-brands fa-facebook navbaricon "></i>
-                    <i class="fa-brands fa-instagram navbaricon"></i>
-                    <i class="fa-brands fa-twitter navbaricon"></i>
-                    <i class="fa-regular fa-envelope navbaricon"></i>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
                 </div>
-                <div class="navbarbottom">
-                    <div class="curencly">
+
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <div class="nav-header">
+                            <span>Home</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu-item">Homepage 1</div>
+                            <div class="submenu-item">Homepage 2</div>
+                            <div class="submenu-item">Homepage 3</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-header">
+                            <span>Shop</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu-item">shop 1</div>
+                            <div class="submenu-item">shop 2</div>
+                            <div class="submenu-item">shop 3</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-header">
+                            <span>Product</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu-item">Product 1</div>
+                            <div class="submenu-item">Product 2</div>
+                            <div class="submenu-item">Product 3</div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-header">
+                            <span>Pages</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu-item">page 1</div>
+                            <div class="submenu-item">page 2</div>
+                            <div class="submenu-item">page 3</div>
+
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="utility-links">
+                    <div class="utility-item">
+                        <span>Cart</span>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge">2</span>
+                        </div>
+                    </div>
+                    <div class="utility-item">
+                        <span>Wishlist</span>
+                        <div style="display: flex; align-items: center;">
+                            <i class="far fa-heart"></i>
+                            <span class="badge">6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings">
+                    <div class="utility-item">
                         <span>Currency</span>
-                        <span>USD<i class="fa-solid fa-chevron-down"></i></span>
+                        <div style="display: flex; align-items: center;">
+                            <span>USD</span>
+                            <i class="fas fa-chevron-down dropdown-icon" style="margin-left: 5px;"></i>
+                        </div>
                     </div>
-                    <div class="language">
+                    <div class="utility-item">
                         <span>Language</span>
-                        <span>English<i class="fa-solid fa-chevron-down"></i></span>
+                        <div style="display: flex; align-items: center;">
+                            <span>English</span>
+                            <i class="fas fa-chevron-down dropdown-icon" style="margin-left: 5px;"></i>
+                        </div>
                     </div>
-                    <button class="navbarSinginBtn">Sing in</button>
+                </div>
+
+                <button class="sign-in-btn">Sign in</button>
+
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="far fa-envelope"></i></a>
                 </div>
             </div>
         </div>
@@ -1563,7 +1651,7 @@
             GithubAuthProvider,
             signOut
         } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
-    
+
         const firebaseConfig = {
             apiKey: "AIzaSyBuQFNHXDrDtt9IlXAKExR6hl2BCKxK8VQ",
             authDomain: "nayzak-8cd7c.firebaseapp.com",
@@ -1573,16 +1661,16 @@
             appId: "1:697119814290:web:b1601b92f4e4d38c39ec4b",
             measurementId: "G-W2HTRHMFJQ"
         };
-    
+
         // Firebase'ni ishga tushirish
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-    
+
         // 📌 Ro‘yxatdan o‘tish (Sign up)
         window.registerUser = function () {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
-    
+
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     console.log("Ro‘yxatdan o‘tildi:", userCredential.user);
@@ -1594,12 +1682,12 @@
                     showToast("error", "❌ Ro‘yxatdan o‘tishda xatolik!");
                 });
         };
-    
+
         // 📌 Tizimga kirish (Sign in)
         window.signInUser = function () {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
-    
+
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     console.log("Tizimga kirdi:", userCredential.user);
@@ -1611,11 +1699,11 @@
                     showToast("error", "❌ Kirishda xatolik! Parol yoki email noto‘g‘ri.");
                 });
         };
-    
+
         // 📌 Google orqali kirish
         document.getElementById("googleLogin").addEventListener("click", function () {
             const googleProvider = new GoogleAuthProvider();
-    
+
             signInWithPopup(auth, googleProvider)
                 .then((response) => {
                     console.log("Google bilan kirdi:", response.user);
@@ -1627,11 +1715,11 @@
                     showToast("error", "❌ Google bilan kirishda xatolik!");
                 });
         });
-    
+
         // 📌 GitHub orqali kirish
         document.getElementById("githubKirish").addEventListener("click", function () {
             const gitProvider = new GithubAuthProvider();
-    
+
             signInWithPopup(auth, gitProvider)
                 .then((response) => {
                     console.log("GitHub bilan kirdi:", response.user);
@@ -1643,7 +1731,7 @@
                     showToast("error", "❌ GitHub bilan kirishda xatolik!");
                 });
         });
-    
+
         // 📌 Chiqish (Logout) funksiyasi
         window.logoutUser = function () {
             signOut(auth)
@@ -1657,15 +1745,17 @@
                     showToast("error", "❌ Chiqishda xatolik yuz berdi!");
                 });
         };
-    
+
         // 📌 UI elementlarini boshqarish funksiyasi
         function updateUI(isLoggedIn) {
             document.getElementById("singincont").style.display = isLoggedIn ? "none" : "block"; // Modalni yopish
             document.getElementById("singup").style.display = isLoggedIn ? "none" : "block"; // Sign up tugmasi
             document.getElementById("login").style.display = isLoggedIn ? "none" : "block"; // Sign in tugmasi
             document.getElementById("logoutBtn").style.display = isLoggedIn ? "block" : "none"; // Logout tugmasi
+            document.getElementById("navAcBtn").style.display = isLoggedIn ? "block" : "none"; // Foydalanuvchi tugmasi
         }
-    
+
+
         // 📌 Toast xabarnoma funksiyasi
         function showToast(type, message) {
             const toast = document.getElementById("toast");
@@ -1796,4 +1886,5 @@
     </script> -->
     <script src="app.js"></script>
 </body>
+
 </html>

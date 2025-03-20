@@ -111,17 +111,8 @@ window.onclick = function (even) {
 }
 
 
-navbaropen.onclick = function () {
-    nabar.style.display = "block";
-}
-navbarno.onclick = function () {
-    nabar.style.display = "none";
-}
-window.onclick = function (even) {
-    if (even.target == nabar) {
-        nabar.style.display = "none";
-    }
-}
+
+
 function toggleInputType() {
     const input = document.getElementById('passwordInput');
     const icon = document.getElementById('toggleIcon');
@@ -172,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     closeButton.addEventListener("click", closeModal);
     // setInterval(showModal, 30000);
-   
+
 });
 
 
@@ -466,221 +457,251 @@ cartSidebarOpen.addEventListener("click", function () {
 cartSidebarClose.addEventListener("click", function () {
     cartSidebar.style.display = "none"
 })
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Get all quantity controls
     const plusButtons = document.querySelectorAll('.quantity-btn.plus');
     const minusButtons = document.querySelectorAll('.quantity-btn.minus');
     const removeButtons = document.querySelectorAll('.remove-btn');
     const shippingOptions = document.querySelectorAll('input[name="shipping"]');
-    
+
     // Add event listeners to plus buttons
     plusButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const quantityInput = this.parentElement.querySelector('.quantity-input');
-        const cartItem = this.closest('.cart-item');
-        
-        // Increase quantity
-        let quantity = parseInt(quantityInput.value);
-        quantity++;
-        quantityInput.value = quantity;
-        
-        // Update subtotal
-        updateItemSubtotal(cartItem, quantity);
-        
-        // Update cart summary
-        updateCartSummary();
-      });
+        button.addEventListener('click', function () {
+            const quantityInput = this.parentElement.querySelector('.quantity-input');
+            const cartItem = this.closest('.cart-item');
+
+            // Increase quantity
+            let quantity = parseInt(quantityInput.value);
+            quantity++;
+            quantityInput.value = quantity;
+
+            // Update subtotal
+            updateItemSubtotal(cartItem, quantity);
+
+            // Update cart summary
+            updateCartSummary();
+        });
     });
-    
+
     // Add event listeners to minus buttons
     minusButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const quantityInput = this.parentElement.querySelector('.quantity-input');
-        const cartItem = this.closest('.cart-item');
-        
-        let quantity = parseInt(quantityInput.value);
-        if (quantity > 1) {
-          quantity--;
-          quantityInput.value = quantity;
-          
-          updateItemSubtotal(cartItem, quantity);
-          
-          updateCartSummary();
-        }
-      });
+        button.addEventListener('click', function () {
+            const quantityInput = this.parentElement.querySelector('.quantity-input');
+            const cartItem = this.closest('.cart-item');
+
+            let quantity = parseInt(quantityInput.value);
+            if (quantity > 1) {
+                quantity--;
+                quantityInput.value = quantity;
+
+                updateItemSubtotal(cartItem, quantity);
+
+                updateCartSummary();
+            }
+        });
     });
-    
+
     const quantityInputs = document.querySelectorAll('.quantity-input');
     quantityInputs.forEach(input => {
-      input.addEventListener('change', function() {
-        const cartItem = this.closest('.cart-item');
-        let quantity = parseInt(this.value);
-        
-        if (isNaN(quantity) || quantity < 1) {
-          quantity = 1;
-          this.value = 1;
-        }
-        
-        updateItemSubtotal(cartItem, quantity);
-        
-        updateCartSummary();
-      });
+        input.addEventListener('change', function () {
+            const cartItem = this.closest('.cart-item');
+            let quantity = parseInt(this.value);
+
+            if (isNaN(quantity) || quantity < 1) {
+                quantity = 1;
+                this.value = 1;
+            }
+
+            updateItemSubtotal(cartItem, quantity);
+
+            updateCartSummary();
+        });
     });
-    
+
     removeButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const cartItem = this.closest('.cart-item');
-        cartItem.remove();
-        
-        updateCartSummary();
-      });
+        button.addEventListener('click', function () {
+            const cartItem = this.closest('.cart-item');
+            cartItem.remove();
+
+            updateCartSummary();
+        });
     });
-    
+
     shippingOptions.forEach(option => {
-      option.addEventListener('change', function() {
-        updateCartSummary();
-      });
+        option.addEventListener('change', function () {
+            updateCartSummary();
+        });
     });
-    
+
     function updateItemSubtotal(cartItem, quantity) {
-      const priceText = cartItem.querySelector('.price-col').textContent;
-      const price = parseFloat(priceText.replace('$', ''));
-      const subtotal = price * quantity;
-      
-      cartItem.querySelector('.subtotal-col').textContent = '$' + subtotal.toFixed(2);
+        const priceText = cartItem.querySelector('.price-col').textContent;
+        const price = parseFloat(priceText.replace('$', ''));
+        const subtotal = price * quantity;
+
+        cartItem.querySelector('.subtotal-col').textContent = '$' + subtotal.toFixed(2);
     }
-    
+
     function updateCartSummary() {
-      const subtotalElements = document.querySelectorAll('.subtotal-col');
-      let subtotal = 0;
-      
-      subtotalElements.forEach(element => {
-        if (element.closest('.cart-item')) { // Make sure we're only counting items, not headers
-          subtotal += parseFloat(element.textContent.replace('$', ''));
+        const subtotalElements = document.querySelectorAll('.subtotal-col');
+        let subtotal = 0;
+
+        subtotalElements.forEach(element => {
+            if (element.closest('.cart-item')) { // Make sure we're only counting items, not headers
+                subtotal += parseFloat(element.textContent.replace('$', ''));
+            }
+        });
+
+        let shippingCost = 0;
+        const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+        if (selectedShipping) {
+            const shippingPriceText = selectedShipping.closest('.shipping-option').querySelector('.shipping-price').textContent;
+            if (shippingPriceText.includes('+')) {
+                shippingCost = parseFloat(shippingPriceText.replace('+$', ''));
+            }
         }
-      });
-      
-      let shippingCost = 0;
-      const selectedShipping = document.querySelector('input[name="shipping"]:checked');
-      if (selectedShipping) {
-        const shippingPriceText = selectedShipping.closest('.shipping-option').querySelector('.shipping-price').textContent;
-        if (shippingPriceText.includes('+')) {
-          shippingCost = parseFloat(shippingPriceText.replace('+$', ''));
-        }
-      }
-      
-      const total = subtotal + shippingCost;
-      
-      document.querySelector('.summary-row:not(.total) .summary-price').textContent = '$' + subtotal.toFixed(2);
-      document.querySelector('.summary-row.total .summary-price').textContent = '$' + total.toFixed(2);
+
+        const total = subtotal + shippingCost;
+
+        document.querySelector('.summary-row:not(.total) .summary-price').textContent = '$' + subtotal.toFixed(2);
+        document.querySelector('.summary-row.total .summary-price').textContent = '$' + total.toFixed(2);
     }
-    
+
     updateCartSummary();
-  });
-document.addEventListener('DOMContentLoaded', function() {
+});
+document.addEventListener('DOMContentLoaded', function () {
     const validCoupons = {
-      'SALOM10': 10,
-      'SALOM20': 20,
-      'SALOM30': 30,
-      'SALOM40': 40,
-      'SALOM50': 50
+        'SALOM10': 10,
+        'SALOM20': 20,
+        'SALOM30': 30,
+        'SALOM40': 40,
+        'SALOM50': 50
     };
-    
+
     const couponInput = document.querySelector('.coupon-input');
     const applyButton = document.querySelector('.apply-btn');
-    
+
     if (!couponInput || !applyButton) {
-      console.error('Coupon elements not found');
-      return;
+        console.error('Coupon elements not found');
+        return;
     }
-    
+
     console.log('Coupon elements found:', couponInput, applyButton);
-    
+
     function applyCouponIsolated() {
-      console.log('Apply coupon function called');
-      
-      const couponCode = couponInput.value.trim().toUpperCase();
-      console.log('Coupon code entered:', couponCode);
-      
-      if (!couponCode) {
-        alert('Please enter a coupon code');
-        return;
-      }
-      
-      const subtotalElement = document.querySelector('.summary-row:not(.total) .summary-price');
-      if (!subtotalElement) {
-        console.error('Subtotal element not found');
-        return;
-      }
-      
-      const totalElement = document.querySelector('.summary-row.total .summary-price');
-      if (!totalElement) {
-        console.error('Total element not found');
-        return;
-      }
-      
-      if (validCoupons[couponCode]) {
-        const discountPercentage = validCoupons[couponCode];
-        console.log('Valid coupon found:', couponCode, discountPercentage);
-        
-        const subtotal = parseFloat(subtotalElement.textContent.replace('$', ''));
-        console.log('Subtotal:', subtotal);
-        
-        const discountAmount = (subtotal * discountPercentage) / 100;
-        console.log('Discount amount:', discountAmount);
-        
-        let shippingCost = 0;
-        const shippingOption = document.querySelector('input[name="shipping"]:checked');
-        if (shippingOption) {
-          const shippingLabel = shippingOption.closest('.shipping-option').querySelector('.shipping-price').textContent;
-          shippingCost = shippingLabel.includes('+') ? 15 : 0;
-        }
-        console.log('Shipping cost:', shippingCost);
-        
-        const newTotal = subtotal - discountAmount + shippingCost;
-        console.log('New total:', newTotal);
-        
-        totalElement.textContent = '$' + newTotal.toFixed(2);
-        
-        let discountRow = document.querySelector('.discount-row');
-        if (!discountRow) {
-          discountRow = document.createElement('div');
-          discountRow.className = 'summary-row discount-row';
-          
-          const totalRow = document.querySelector('.summary-row.total');
-          if (totalRow && totalRow.parentNode) {
-            totalRow.parentNode.insertBefore(discountRow, totalRow);
-          } else {
-            console.error('Could not find total row');
+        console.log('Apply coupon function called');
+
+        const couponCode = couponInput.value.trim().toUpperCase();
+        console.log('Coupon code entered:', couponCode);
+
+        if (!couponCode) {
+            alert('Please enter a coupon code');
             return;
-          }
         }
-        
-        discountRow.innerHTML = `
+
+        const subtotalElement = document.querySelector('.summary-row:not(.total) .summary-price');
+        if (!subtotalElement) {
+            console.error('Subtotal element not found');
+            return;
+        }
+
+        const totalElement = document.querySelector('.summary-row.total .summary-price');
+        if (!totalElement) {
+            console.error('Total element not found');
+            return;
+        }
+
+        if (validCoupons[couponCode]) {
+            const discountPercentage = validCoupons[couponCode];
+            console.log('Valid coupon found:', couponCode, discountPercentage);
+
+            const subtotal = parseFloat(subtotalElement.textContent.replace('$', ''));
+            console.log('Subtotal:', subtotal);
+
+            const discountAmount = (subtotal * discountPercentage) / 100;
+            console.log('Discount amount:', discountAmount);
+
+            let shippingCost = 0;
+            const shippingOption = document.querySelector('input[name="shipping"]:checked');
+            if (shippingOption) {
+                const shippingLabel = shippingOption.closest('.shipping-option').querySelector('.shipping-price').textContent;
+                shippingCost = shippingLabel.includes('+') ? 15 : 0;
+            }
+            console.log('Shipping cost:', shippingCost);
+
+            const newTotal = subtotal - discountAmount + shippingCost;
+            console.log('New total:', newTotal);
+
+            totalElement.textContent = '$' + newTotal.toFixed(2);
+
+            let discountRow = document.querySelector('.discount-row');
+            if (!discountRow) {
+                discountRow = document.createElement('div');
+                discountRow.className = 'summary-row discount-row';
+
+                const totalRow = document.querySelector('.summary-row.total');
+                if (totalRow && totalRow.parentNode) {
+                    totalRow.parentNode.insertBefore(discountRow, totalRow);
+                } else {
+                    console.error('Could not find total row');
+                    return;
+                }
+            }
+
+            discountRow.innerHTML = `
           <span>Discount (${couponCode})</span>
           <span class="discount-amount">-$${discountAmount.toFixed(2)}</span>
         `;
-        
-        
-      } else {
-        console.log('Invalid coupon:', couponCode);
-        alert('Invalid coupon code. Please try again.');
-      }
+
+
+        } else {
+            console.log('Invalid coupon:', couponCode);
+            alert('Invalid coupon code. Please try again.');
+        }
     }
-    
-    applyButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      console.log('Apply button clicked');
-      applyCouponIsolated();
-    });
-    
-    couponInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
+
+    applyButton.addEventListener('click', function (e) {
         e.preventDefault();
-        console.log('Enter key pressed in coupon input');
+        console.log('Apply button clicked');
         applyCouponIsolated();
-      }
     });
-    
+
+    couponInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            console.log('Enter key pressed in coupon input');
+            applyCouponIsolated();
+        }
+    });
+
     console.log('Isolated coupon functionality initialized');
-  });
+});
+// Accordion 
+document.querySelectorAll('.nav-header').forEach(header => {
+    header.addEventListener('click', () => {
+        header.classList.toggle('active');
+
+        const submenu = header.nextElementSibling;
+        submenu.classList.toggle('active');
+
+        document.querySelectorAll('.nav-header').forEach(otherHeader => {
+            if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                otherHeader.classList.remove('active');
+                otherHeader.nextElementSibling.classList.remove('active');
+            }
+        });
+    });
+});
+const sidebarcloseBtn=document.querySelector(".Sidebarclose-btn")
+const sidebar = document.querySelector(".orbteur")
+const sidebarOpen = document.querySelector(".SidebarOpenBtn")
+sidebarOpen.addEventListener('click', function () {
+    sidebar.style.display = "block"
+});
+sidebarcloseBtn.addEventListener('click', function () {
+    sidebar.style.display = "none"
+});
+window.onclick = function (e) {
+    if (e.target == sidebar) {
+        sidebar.style.display = "none";
+    }
+}

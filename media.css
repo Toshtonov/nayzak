@@ -161,6 +161,8 @@
     order: 3;
     width: 100%;
     margin-top: 15px;
+    display: flex; 
+    justify-content: space-between;
   }
 
   .nav ul {
@@ -306,7 +308,9 @@
     text-align: center;
     gap: 10px;
   }
-
+.SidebarOpenBtn{
+  display: block; 
+}
   .sreachPageCards {
     row-gap: 450px;
     grid-template-columns: repeat(2, 1fr);
