@@ -705,3 +705,131 @@ window.onclick = function (e) {
         sidebar.style.display = "none";
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    // Shipping method selection
+    const shippingOptions = document.querySelectorAll('input[name="shipping"]');
+    const totalPrice = document.querySelector('.total-price span:last-child');
+    const shippingPrice = document.querySelector('.price-breakdown .price-row:nth-child(2) span:last-child');
+    
+    shippingOptions.forEach(option => {
+      option.addEventListener('change', function() {
+        if (this.value === 'express') {
+          shippingPrice.textContent = '$12.00';
+          totalPrice.textContent = '$83.50';
+        } else {
+          shippingPrice.textContent = '$0.00';
+          totalPrice.textContent = '$71.50';
+        }
+      });
+    });
+    
+    // Voucher code application
+    const voucherButton = document.querySelector('.voucher-section button');
+    const voucherInput = document.querySelector('.voucher-section input');
+    const discountRow = document.querySelector('.price-row.discount span:last-child');
+    
+    voucherButton.addEventListener('click', function() {
+      const code = voucherInput.value.trim().toLowerCase();
+      
+      if (code === 'discount10') {
+        discountRow.textContent = '-$10.00 (Reduced)';
+        
+        // Update total based on current shipping method
+        const isExpressShipping = document.getElementById('express-shipping').checked;
+        if (isExpressShipping) {
+          totalPrice.textContent = '$82.00';
+        } else {
+          totalPrice.textContent = '$70.00';
+        }
+        
+        // Show success message
+        alert('Voucher applied successfully!');
+      } else if (code) {
+        alert('Invalid voucher code');
+      }
+    });
+    
+    // Form validation
+    const placeOrderBtn = document.querySelector('.place-order-btn');
+    
+    placeOrderBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const requiredFields = document.querySelectorAll('[required]');
+      let isValid = true;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = '#ff3b30';
+          isValid = false;
+        } else {
+          field.style.borderColor = '#e5e5e5';
+        }
+      });
+      
+      if (isValid) {
+        alert('Order placed successfully!');
+      } else {
+        alert('Please fill in all required fields');
+      }
+    });
+    
+    // Card number formatting
+    const cardNumberInput = document.getElementById('card-number');
+    
+    cardNumberInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      // Add space after every 4 digits
+      if (value.length > 0) {
+        value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
+      }
+      
+      e.target.value = value.substring(0, 19);
+    });
+    
+    // Expiry date formatting
+    const expiryDateInput = document.getElementById('expiry-date');
+    
+    expiryDateInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      
+      if (value.length > 2) {
+        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+      }
+      
+      e.target.value = value;
+    });
+    
+    // CVC code formatting
+    const cvcInput = document.getElementById('cvc');
+    
+    cvcInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      e.target.value = value.substring(0, 3);
+    });
+    
+    // // Save payment information toggle
+    // const savePaymentCheckbox = document.getElementById('save-payment');
+    // const usePayPalCheckbox = document.getElementById('use-paypal');
+    
+    // usePayPalCheckbox.addEventListener('change', function() {
+    //   const cardFields = document.querySelectorAll('#card-number, #expiry-date, #cvc');
+      
+    //   if (this.checked) {
+    //     cardFields.forEach(field => {
+    //       field.disabled = true;
+    //       field.parentElement.style.opacity = '0.5';
+    //     });
+    //     savePaymentCheckbox.disabled = true;
+    //     savePaymentCheckbox.parentElement.style.opacity = '0.5';
+    //   } else {
+    //     cardFields.forEach(field => {
+    //       field.disabled = false;
+    //       field.parentElement.style.opacity = '1';
+    //     });
+    //     savePaymentCheckbox.disabled = false;
+    //     savePaymentCheckbox.parentElement.style.opacity = '1';
+    //   }
+    // });
+  });

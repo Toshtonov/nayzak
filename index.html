@@ -159,43 +159,7 @@
                                             Proof lucratively engage worldwide method process shopping.
                                         </p>
                                         <div class="social-icons">
-                                            <a href="#" aria-label="Facebook">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path
-                                                        d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
-                                                    </path>
-                                                </svg>
-                                            </a>
-                                            <a href="#" aria-label="Instagram">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                                </svg>
-                                            </a>
-                                            <a href="#" aria-label="Twitter">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path
-                                                        d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
-                                                    </path>
-                                                </svg>
-                                            </a>
-                                            <a href="#" aria-label="Mail">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path
-                                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                                    </path>
-                                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                                </svg>
-                                            </a>
+                                            
                                         </div>
                                     </div>
 
@@ -700,7 +664,7 @@
 
                             <div class="quantity-selector">
                                 <button class="quantity-btn minus">-</button>
-                                <input type="number" value="1" min="1" class="quantity-input">
+                                <input type="text" value="1" min="1" class="quantity-input">
                                 <button class="quantity-btn plus">+</button>
                             </div>
 
@@ -1208,6 +1172,7 @@
             <div id="pages" class="page">
 
                 <button id="Cartsidebaropen">ochil</button>
+                <button data-switcher="checkout">checkout</button>
                 <main>
                     <div class="container">
                         <h1 class="page-title">Cart</h1>
@@ -1451,6 +1416,251 @@
                                 <div class="currency-selector">
                                     USD <i class="fas fa-chevron-down"></i>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <div id="checkout" class="page">
+                <div class="container">
+                    <header>
+                      <h1>Checkout</h1>
+                    </header>
+                
+                    <div class="checkout-container">
+                      <div class="checkout-form">
+                        <!-- Express Checkout -->
+                        <div class="checkout-section">
+                          <p class="returning-customer">Returning customer? <a href="#">Click here to login</a></p>
+                          <p class="express-checkout-label">Express Checkout</p>
+                          
+                          <div class="payment-buttons">
+                            <button class="paypal-btn">
+                              <img src="./image/PayPal.png" alt="PayPal">
+                            </button>
+                            <button class="gpay-btn">
+                              <img src="./image/GPay.png" alt="Google Pay">
+                            </button>
+                            <div class="divider">
+                              <span>OR</span>
+                            </div>
+                          </div>
+                        </div>
+                
+                        <!-- Contact Information -->
+                        <div class="checkout-section">
+                          <h2>Contact information</h2>
+                          <div class="form-row">
+                            <div class="form-group half">
+                              <label for="first-name">First name</label>
+                              <input type="text" id="first-name" placeholder="First name">
+                            </div>
+                            <div class="form-group half">
+                              <label for="last-name">Last name</label>
+                              <input type="text" id="last-name" placeholder="Last name">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" placeholder="Email address">
+                          </div>
+                        </div>
+                
+                        <!-- Shipping Address -->
+                        <div class="checkout-section">
+                          <h2>Shipping address</h2>
+                          <div class="form-group">
+                            <label for="street-address">Street address *</label>
+                            <input type="text" id="street-address" placeholder="Street address" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="country">Country *</label>
+                            <select id="country" required>
+                              <option value="">Select country</option>
+                              <option value="us">United States</option>
+                              <option value="ca">Canada</option>
+                              <option value="uk">United Kingdom</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="city">Town / City *</label>
+                            <input type="text" id="city" placeholder="Town / City" required>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group half">
+                              <label for="state">State</label>
+                              <input type="text" id="state" placeholder="State">
+                            </div>
+                            <div class="form-group half">
+                              <label for="zip">Zip code</label>
+                              <input type="text" id="zip" placeholder="Zip code">
+                            </div>
+                          </div>
+                          <div class="form-group checkbox">
+                            <input type="checkbox" id="save-address">
+                            <label for="save-address">Use a different billing address (optional)</label>
+                          </div>
+                        </div>
+                
+                        <!-- Shipping Method -->
+                        <div class="checkout-section">
+                          <h2>Shipping method</h2>
+                          <div class="shipping-options">
+                            <div class="shipping-option">
+                              <div class="option-left">
+                                <input type="radio" id="free-shipping" name="shipping" value="free" checked>
+                                <label for="free-shipping">Free shipping</label>
+                              </div>
+                              <div class="option-right">$0.00</div>
+                            </div>
+                            <div class="shipping-option">
+                              <div class="option-left">
+                                <input type="radio" id="express-shipping" name="shipping" value="express">
+                                <label for="express-shipping">Express shipping</label>
+                              </div>
+                              <div class="option-right">$12.00</div>
+                            </div>
+                          </div>
+                        </div>
+                
+                        <!-- Payment Information -->
+                        <div class="checkout-section">
+                          <h2>Payment information</h2>
+                          <div class="payment-method">
+                            <div class="payment-method-header">
+                              <div class="payment-method-left">
+                                <i class="fa-solid fa-credit-card"></i>
+                                <span>Pay by card</span>
+                              </div>
+                              <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="card-number">Card number</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group half">
+                              <label for="expiry-date">Expiry date</label>
+                              <input type="text" id="expiry-date" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group half">
+                              <label for="cvc">CVC code</label>
+                              <input type="text" id="cvc" placeholder="CVC">
+                            </div>
+                          </div>
+                          <div class="form-group checkbox chchchc">
+                            <input type="checkbox" id="save-payment" name="payment">
+                            <label for="save-payment">Save payment information <span class="secured">Secured</span></label>
+                          </div>
+                          <div class="form-group checkbox chchchc">
+                            <input type="checkbox" id="use-paypal" name="payment">
+                            <label for="use-paypal">PayPal</label>
+                          </div>
+                          <p class="privacy-note">Your payment data will be used to process your order. Learn more about our <a href="#">privacy policy</a>.</p>
+                        </div>
+                
+                        <button class="place-order-btn">Place order</button>
+                      </div>
+                
+                      <div class="order-summary">
+                        <h2>Order summary</h2>
+                        <div class="product-item">
+                          <div class="product-image">
+                            <img src="./image/38e0a196_20d2_4820_9f3f_e44c98318039.webp" alt="Adidas Runners">
+                          </div>
+                          <div class="product-details">
+                            <h3>Adidas Runners</h3>
+                            <div class="product-meta">
+                              <span>Size: 42</span>
+                              <span class="separator">•</span>
+                              <span>Color: Red</span>
+                            </div>
+                          </div>
+                          <div class="product-price">$69.00</div>
+                        </div>
+                
+                        <div class="voucher-section">
+                          <input type="text" placeholder="Voucher code">
+                          <button>Apply</button>
+                        </div>
+                
+                        <div class="price-breakdown">
+                          <div class="price-row">
+                            <span>VAT (tax)</span>
+                            <span>$0.00</span>
+                          </div>
+                          <div class="price-row">
+                            <span>Shipping</span>
+                            <span>$0.00</span>
+                          </div>
+                          <div class="price-row discount">
+                            <span>Discount</span>
+                            <span>-$8.50 (Reduced)</span>
+                          </div>
+                        </div>
+                
+                        <div class="total-price">
+                          <span>Total</span>
+                          <span>$71.50</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <footer class="footer">
+                    <div class="container">
+                        <div class="footer-grid">
+                            <div class="footer-brand">
+                                <a href="/" class="logo"> Nayzak</a>
+                                <p>Most successfully original aesthetic fashion premium blog</p>
+                                <div class="botlinks">
+                                    <a href="#" class="footer_icons">
+                                        <i class="fa-brands fa-facebook ficon"></i>
+                                        <i class="fa-brands fa-instagram ficon"></i>
+                                        <i class="fa-brands fa-twitter ficon"></i>
+                                        <i class="fa-regular fa-envelope ficon"></i>
+                                    </a>
+                                </div>
+                            </div>
+            
+                            <div class="footer-links">
+                                <h3>Shop</h3>
+                                <ul>
+                                    <li><a href="#">My account</a></li>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Wishlist</a></li>
+                                    <li><a href="#">Cart</a></li>
+                                </ul>
+                            </div>
+            
+                            <div class="footer-links">
+                                <h3>Information</h3>
+                                <ul>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Cookie Policy</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+            
+                            <div class="footer-links">
+                                <h3>Company</h3>
+                                <ul>
+                                    <li><a href="#">Who we are</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+            
+                        <div class="footer-bottom">
+                            <p>© 2024 Nauzak Design</p>
+                            <div class="language-currency">
+                                <span> <img src="./Flag-United-States-of-America.webp">English <i
+                                        class="fa-solid fa-arrow-down"></i></span>
+                                <span>USD<i class="fa-solid fa-arrow-down"></i></span>
                             </div>
                         </div>
                     </div>
