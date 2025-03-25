@@ -440,13 +440,15 @@ window.addEventListener("click", function (event) {
     if (nabar && event.target === nabar) {
         nabar.style.display = "none";
     }
+    if (sidebar && event.target === sidebar) {
+        sidebar.style.display = "sidebar"
+    }
     document.querySelectorAll(".dropdown-content").forEach(menu => {
         if (!menu.contains(event.target) && !menu.previousElementSibling.contains(event.target)) {
             menu.style.display = "none";
         }
     });
 });
-
 
 const cartSidebar = document.querySelector(".cartsidebar")
 const cartSidebarOpen = document.getElementById("Cartsidebaropen")
@@ -458,32 +460,26 @@ cartSidebarClose.addEventListener("click", function () {
     cartSidebar.style.display = "none"
 })
 document.addEventListener('DOMContentLoaded', function () {
-    // Get all quantity controls
     const plusButtons = document.querySelectorAll('.quantity-btn.plus');
     const minusButtons = document.querySelectorAll('.quantity-btn.minus');
     const removeButtons = document.querySelectorAll('.remove-btn');
     const shippingOptions = document.querySelectorAll('input[name="shipping"]');
 
-    // Add event listeners to plus buttons
     plusButtons.forEach(button => {
         button.addEventListener('click', function () {
             const quantityInput = this.parentElement.querySelector('.quantity-input');
             const cartItem = this.closest('.cart-item');
 
-            // Increase quantity
             let quantity = parseInt(quantityInput.value);
             quantity++;
             quantityInput.value = quantity;
 
-            // Update subtotal
             updateItemSubtotal(cartItem, quantity);
 
-            // Update cart summary
             updateCartSummary();
         });
     });
 
-    // Add event listeners to minus buttons
     minusButtons.forEach(button => {
         button.addEventListener('click', function () {
             const quantityInput = this.parentElement.querySelector('.quantity-input');
@@ -691,7 +687,7 @@ document.querySelectorAll('.nav-header').forEach(header => {
         });
     });
 });
-const sidebarcloseBtn=document.querySelector(".Sidebarclose-btn")
+const sidebarcloseBtn = document.querySelector(".Sidebarclose-btn")
 const sidebar = document.querySelector(".orbteur")
 const sidebarOpen = document.querySelector(".SidebarOpenBtn")
 sidebarOpen.addEventListener('click', function () {
@@ -700,136 +696,11 @@ sidebarOpen.addEventListener('click', function () {
 sidebarcloseBtn.addEventListener('click', function () {
     sidebar.style.display = "none"
 });
-window.onclick = function (e) {
-    if (e.target == sidebar) {
-        sidebar.style.display = "none";
-    }
-}
-document.addEventListener('DOMContentLoaded', function() {
-    // Shipping method selection
-    const shippingOptions = document.querySelectorAll('input[name="shipping"]');
-    const totalPrice = document.querySelector('.total-price span:last-child');
-    const shippingPrice = document.querySelector('.price-breakdown .price-row:nth-child(2) span:last-child');
-    
-    shippingOptions.forEach(option => {
-      option.addEventListener('change', function() {
-        if (this.value === 'express') {
-          shippingPrice.textContent = '$12.00';
-          totalPrice.textContent = '$83.50';
-        } else {
-          shippingPrice.textContent = '$0.00';
-          totalPrice.textContent = '$71.50';
-        }
-      });
-    });
-    
-    // Voucher code application
-    const voucherButton = document.querySelector('.voucher-section button');
-    const voucherInput = document.querySelector('.voucher-section input');
-    const discountRow = document.querySelector('.price-row.discount span:last-child');
-    
-    voucherButton.addEventListener('click', function() {
-      const code = voucherInput.value.trim().toLowerCase();
-      
-      if (code === 'discount10') {
-        discountRow.textContent = '-$10.00 (Reduced)';
-        
-        // Update total based on current shipping method
-        const isExpressShipping = document.getElementById('express-shipping').checked;
-        if (isExpressShipping) {
-          totalPrice.textContent = '$82.00';
-        } else {
-          totalPrice.textContent = '$70.00';
-        }
-        
-        // Show success message
-        alert('Voucher applied successfully!');
-      } else if (code) {
-        alert('Invalid voucher code');
-      }
-    });
-    
-    // Form validation
-    const placeOrderBtn = document.querySelector('.place-order-btn');
-    
-    placeOrderBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const requiredFields = document.querySelectorAll('[required]');
-      let isValid = true;
-      
-      requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-          field.style.borderColor = '#ff3b30';
-          isValid = false;
-        } else {
-          field.style.borderColor = '#e5e5e5';
-        }
-      });
-      
-      if (isValid) {
-        alert('Order placed successfully!');
-      } else {
-        alert('Please fill in all required fields');
-      }
-    });
-    
-    // Card number formatting
-    const cardNumberInput = document.getElementById('card-number');
-    
-    cardNumberInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      
-      // Add space after every 4 digits
-      if (value.length > 0) {
-        value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
-      }
-      
-      e.target.value = value.substring(0, 19);
-    });
-    
-    // Expiry date formatting
-    const expiryDateInput = document.getElementById('expiry-date');
-    
-    expiryDateInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      
-      if (value.length > 2) {
-        value = value.substring(0, 2) + '/' + value.substring(2, 4);
-      }
-      
-      e.target.value = value;
-    });
-    
-    // CVC code formatting
-    const cvcInput = document.getElementById('cvc');
-    
-    cvcInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      e.target.value = value.substring(0, 3);
-    });
-    
-    // // Save payment information toggle
-    // const savePaymentCheckbox = document.getElementById('save-payment');
-    // const usePayPalCheckbox = document.getElementById('use-paypal');
-    
-    // usePayPalCheckbox.addEventListener('change', function() {
-    //   const cardFields = document.querySelectorAll('#card-number, #expiry-date, #cvc');
-      
-    //   if (this.checked) {
-    //     cardFields.forEach(field => {
-    //       field.disabled = true;
-    //       field.parentElement.style.opacity = '0.5';
-    //     });
-    //     savePaymentCheckbox.disabled = true;
-    //     savePaymentCheckbox.parentElement.style.opacity = '0.5';
-    //   } else {
-    //     cardFields.forEach(field => {
-    //       field.disabled = false;
-    //       field.parentElement.style.opacity = '1';
-    //     });
-    //     savePaymentCheckbox.disabled = false;
-    //     savePaymentCheckbox.parentElement.style.opacity = '1';
-    //   }
-    // });
-  });
+const ChekoutPageOpen = document.getElementById("ChekoutPage__open")
+const checkoutpage = document.getElementById("checkout")
+const pagesPage = document.getElementById("pages")
+ChekoutPageOpen.addEventListener("click", function () {
+    checkoutpage.style.display = "block"
+    pagesPage.style.display = "none"
+    a
+})
