@@ -542,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let subtotal = 0;
 
         subtotalElements.forEach(element => {
-            if (element.closest('.cart-item')) { // Make sure we're only counting items, not headers
+            if (element.closest('.cart-item')) {
                 subtotal += parseFloat(element.textContent.replace('$', ''));
             }
         });
