@@ -19,7 +19,10 @@
     color: white;
     text-align: center;
     gap: 50px;
-    height: 25px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .headerTopText {
@@ -34,7 +37,7 @@
 
 .HeaderTopIcon {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
 }
 
@@ -302,12 +305,29 @@ p {
     background-color: #fff;
 }
 
-.login {
+#login {
     width: 70px;
     height: 30px;
     border-radius: 10px;
     border: 1px solid var(--grayColor);
     background-color: #fff;
+}
+@media(max-width:480px){
+    .login{
+        display: none;
+    }
+    .singup{
+        display: none;
+    }
+    .sign-in-btn{
+        display: block !important;
+    }
+    .tab-panel{
+        margin-right: 0 !important;
+    }
+    .coupon-input{
+        width: 100px;
+    }
 }
 
 .navsingupmodalcont {
@@ -797,7 +817,9 @@ h1 {
     border-bottom: 1px solid #e5e5e5;
     align-items: center;
 }
-
+#product{
+    margin: 0 auto;
+}
 .product-info {
     display: flex;
     gap: 16px;
