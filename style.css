@@ -375,6 +375,7 @@ p {
     margin: 0 auto;
     font-size: 30px;
     width: 90%;
+    position: relative;
 }
 
 .navsingintop {
@@ -1134,6 +1135,7 @@ h1 {
     display: flex;
     width: 80%;
     margin: 25px !important;
+    justify-content: space-between !important;
 }
 
 .filter-container {
@@ -1141,6 +1143,7 @@ h1 {
     background-color: white;
     font-family: "Inter", serif;
     padding-left: 15px;
+    
 }
 
 .filter-header {
@@ -2005,8 +2008,8 @@ h3 {
 
  .close {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 35px;
+    right: 10px;
     font-size: 20px;
     cursor: pointer;
 }
